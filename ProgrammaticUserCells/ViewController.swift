@@ -22,20 +22,27 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         userView.collectionView.dataSource = self
-       // userView.collectionView.delegate = self
+        userView.collectionView.delegate = self
         userView.collectionView.register(UINib(nibName: "UserCell", bundle: nil), forCellWithReuseIdentifier: "userCell")
         fetchUsers()
     }
     
     private func fetchUsers() {
-     //   users = User.getUsers(from: <#T##Data#>)
+        UsersFetchingService.manager.getUsers { (result) in
+            switch result {
+            case .failure(let appError):
+                print(appError)
+            case .success(let users):
+                self.users = users
+            }
+        }
     }
 
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -18,7 +18,21 @@ class UserDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
     }
+    
+    
+    private func updateUI() {
+        guard let user = user else {
+            fatalError("could not update UI")
+        }
+        
+        
+        
+        
+        
+    }
+    
     
 
 }

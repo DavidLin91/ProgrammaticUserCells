@@ -40,12 +40,12 @@
                     <constraint firstItem="74X-I6-dIU" firstAttribute="top" secondItem="tYs-1n-gwx" secondAttribute="top" id="ziX-rk-xZp"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="270" height="98"/>
+            <size key="customSize" width="270" height="97"/>
             <connections>
                 <outlet property="userName" destination="D4i-ZY-WQw" id="VOJ-IX-TPP"/>
                 <outlet property="userPhoto" destination="74X-I6-dIU" id="KW1-fj-KmA"/>
             </connections>
-            <point key="canvasLocation" x="191.30434782608697" y="87.053571428571431"/>
+            <point key="canvasLocation" x="191.30434782608697" y="86.71875"/>
         </collectionViewCell>
     </objects>
     <resources>
