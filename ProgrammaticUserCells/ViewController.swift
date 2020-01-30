@@ -50,6 +50,8 @@ extension ViewController: UICollectionViewDataSource {
             fatalError("could not downcast to user cell")
         }
         cell.backgroundColor = .white
+        let user = users[indexPath.row]
+        cell.configureCell(user: user)
         return cell
     }
 }

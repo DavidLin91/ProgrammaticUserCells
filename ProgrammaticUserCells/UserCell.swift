@@ -9,7 +9,30 @@
 import UIKit
 
 class UserCell: UICollectionViewCell {
+    
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    
+    
+    func configureCell(user: User) {
+        userName.text = "\(user.name.first) \(user.name.last)"
+        
+        ImageClient.getImage(urlString: user.picture.large) { (result) in
+            switch result {
+            case .failure:
+                break
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.userPhoto.image = user
+                }
+            }
+        }
+        
+        
+    }
+
+    
+
+    
     
 }

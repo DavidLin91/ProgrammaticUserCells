@@ -7,6 +7,7 @@
 //
 
 import UIKit
+ 
 
 class UserDetailVC: UIViewController {
     @IBOutlet weak var userPhoto: UIImageView!
@@ -14,7 +15,6 @@ class UserDetailVC: UIViewController {
     @IBOutlet weak var userEmail: UILabel!
     
     var user: User?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +27,17 @@ class UserDetailVC: UIViewController {
             fatalError("could not update UI")
         }
         
-        
-        
-        
-        
+        userName.text = "\(user.name.first) \(user.name.last)"
+        userEmail.text = user.email
+        ImageClient.getImage(urlString: user.picture.large) { (result) in
+            switch result {
+            case .failure:
+                break
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.userPhoto.image = user
+                }
+            }
+        }
     }
-    
-    
-
 }
